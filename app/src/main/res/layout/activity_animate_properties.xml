@@ -17,31 +17,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckedTextView
-        android:id="@+id/checkedTextView"
+    <TextView
+        android:id="@+id/tvDirectionToggle"
         android:layout_width="wrap_content"
         android:layout_height="23dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:checkMark="@drawable/ic_rotate_right_black_24dp"
-        android:checkMarkTint="@android:color/black"
+        android:drawableEnd="@drawable/ic_rotate_right_black_24dp"
+        android:drawableRight="@drawable/ic_rotate_right_black_24dp"
         android:text="Direction    "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <CheckedTextView
-        android:id="@+id/checkedTextView2"
+    <TextView
+        android:id="@+id/tvRotationToggle"
         android:layout_width="91dp"
         android:layout_height="23dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:checkMark="@drawable/ic_rotate_right_black_24dp"
-        android:checkMarkTint="@android:color/black"
+        android:drawableEnd="@drawable/ic_rotate_right_black_24dp"
+        android:drawableRight="@drawable/ic_rotate_right_black_24dp"
         android:text="Rotation    "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkedTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDirectionToggle" />
 
     <View
         android:id="@+id/animatedShape"
@@ -55,7 +56,7 @@
         android:background="@android:color/holo_blue_bright"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkedTextView2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvRotationToggle" />
 
 
     <Button
