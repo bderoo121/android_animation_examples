@@ -4,4 +4,6 @@
     <string name="transitions">Transitions</string>
     <string name="revolution">Revolution</string>
     <string name="rotation">Rotation</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
 </resources>
