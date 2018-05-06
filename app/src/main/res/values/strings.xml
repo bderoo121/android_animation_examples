@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AnimationExercises</string>
+    <string name="animate_properties">Animate Properties</string>
+    <string name="transitions">Transitions</string>
+    <string name="revolution">Revolution</string>
+    <string name="rotation">Rotation</string>
 </resources>

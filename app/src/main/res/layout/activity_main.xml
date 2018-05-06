@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +7,7 @@
     tools:context="com.example.bdero.animationexercises.MainActivity">
 
     <TextView
-        android:id="@+id/tv_animate_properties_button"
+        android:id="@+id/buttonAnimateProperties"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -17,7 +16,7 @@
         android:background="@android:color/holo_red_dark"
         android:gravity="center"
         android:padding="16dp"
-        android:text="Animate Properties"
+        android:text="@string/animate_properties"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 
@@ -30,7 +29,7 @@
         android:background="@android:color/holo_orange_dark"
         android:gravity="center"
         android:padding="16dp"
-        android:text="Transitions"
+        android:text="@string/transitions"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 

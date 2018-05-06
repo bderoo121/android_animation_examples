@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ((TextView) findViewById(R.id.ideasTextView)).setText(ideas);
 
-        mAnimatePropertiesButton = (TextView) findViewById(R.id.tv_animate_properties_button);
+        mAnimatePropertiesButton = findViewById(R.id.buttonAnimateProperties);
         mAnimatePropertiesButton.setOnClickListener(this);
 
     }
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
         switch(id){
-            case R.id.tv_animate_properties_button:
+            case R.id.buttonAnimateProperties:
                 startActivity(new Intent(this, AnimatePropertiesActivity.class));
                 break;
             default:
