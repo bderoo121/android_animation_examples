@@ -16,6 +16,7 @@ public class AnimatePropertiesActivity extends AppCompatActivity {
     private static final int NO_DIRECTION = 0;
 
     boolean isRunning;
+
     private Button mAnimateButton;
     private View mAnimatedShape;
     private ObjectAnimator mAnimation;
@@ -23,35 +24,36 @@ public class AnimatePropertiesActivity extends AppCompatActivity {
     private int mRevolutionDir;
     private TextView mRotationToggle;
     private int mRotationDir;
+
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             int id = v.getId();
             switch (id) {
-                case R.id.btnAnimate:
-                    if (isRunning) {
-                        mAnimation.cancel();
-                        mAnimateButton.setText(R.string.start);
-                    } else {
-                        mAnimation = prepareAnimation();
-                        mAnimation.start();
-                        mAnimateButton.setText(R.string.stop);
-                    }
-                    isRunning = !isRunning;
-                    break;
                 case R.id.tvRevolutionToggle:
                     mRevolutionDir = toggleDirection((TextView) v, mRevolutionDir);
                     break;
                 case R.id.tvRotationToggle:
                     mRotationDir = toggleDirection((TextView) v, mRotationDir);
                     break;
-                default:
+            }
+            // Always update before handling start/stop since it instantiates the animation.
+            updateAnimation();
 
+            if (id == R.id.btnAnimate) {
+                if (isRunning) {
+                    mAnimation.cancel();
+                    mAnimateButton.setText(R.string.start);
+                } else {
+                    mAnimation.start();
+                    mAnimateButton.setText(R.string.stop);
+                }
+                isRunning = !isRunning;
             }
         }
     };
 
-    private ObjectAnimator prepareAnimation() {
+    private void updateAnimation() {
         float startRot = mAnimatedShape.getRotation();
         float endRot = startRot + (mRotationDir * 360.0f);
 
@@ -59,7 +61,16 @@ public class AnimatePropertiesActivity extends AppCompatActivity {
         animation.setInterpolator(new LinearInterpolator());
         animation.setRepeatCount(ValueAnimator.INFINITE);
         animation.setDuration(4000);
-        return animation;
+
+        //Restart animation if it was previously running
+        if (isRunning) {
+            //If you don't cancel the original animation, it will resume once the new one is paused.
+            mAnimation.cancel();
+            mAnimation = animation;
+            mAnimation.start();
+        } else {
+            mAnimation = animation;
+        }
     }
 
     @Override
