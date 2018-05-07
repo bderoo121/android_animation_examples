@@ -11,6 +11,7 @@ import android.view.View;
 class CirclePathView extends View {
 
     Paint red_paint_fill = new Paint(), blue_paint_fill, green_paint_stroke, gray_paint_stroke;
+    private float mRadius;
 
     public CirclePathView(Context context) {
         super(context);
@@ -28,6 +29,8 @@ class CirclePathView extends View {
     }
 
     private void init() {
+
+        mRadius = 190;
 
         red_paint_fill = new Paint();
         red_paint_fill.setColor(Color.RED);
@@ -48,11 +51,15 @@ class CirclePathView extends View {
         gray_paint_stroke.setStrokeWidth(40);
     }
 
+    public void setRadius(float radius) {
+        mRadius = radius;
+        invalidate();
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        canvas.drawCircle(380, 360, 190, gray_paint_stroke);
+        canvas.drawCircle(380, 360, mRadius, gray_paint_stroke);
 
     }
 }
