@@ -19,11 +19,12 @@ public class AnimatePropertiesActivity extends AppCompatActivity {
 
     private Button mAnimateButton;
     private View mAnimatedShape;
-    private ObjectAnimator mAnimation;
+    private CirclePathView mCircleView;
     private TextView mRevolutionToggle;
     private int mRevolutionDir;
     private TextView mRotationToggle;
     private int mRotationDir;
+    private ObjectAnimator mShapeAnimation;
 
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
@@ -42,10 +43,10 @@ public class AnimatePropertiesActivity extends AppCompatActivity {
 
             if (id == R.id.btnAnimate) {
                 if (isRunning) {
-                    mAnimation.cancel();
+                    mShapeAnimation.cancel();
                     mAnimateButton.setText(R.string.start);
                 } else {
-                    mAnimation.start();
+                    mShapeAnimation.start();
                     mAnimateButton.setText(R.string.stop);
                 }
                 isRunning = !isRunning;
@@ -65,11 +66,11 @@ public class AnimatePropertiesActivity extends AppCompatActivity {
         //Restart animation if it was previously running
         if (isRunning) {
             //If you don't cancel the original animation, it will resume once the new one is paused.
-            mAnimation.cancel();
-            mAnimation = animation;
-            mAnimation.start();
+            mShapeAnimation.cancel();
+            mShapeAnimation = animation;
+            mShapeAnimation.start();
         } else {
-            mAnimation = animation;
+            mShapeAnimation = animation;
         }
     }
 
@@ -80,6 +81,7 @@ public class AnimatePropertiesActivity extends AppCompatActivity {
 
         mAnimatedShape = findViewById(R.id.animatedShape);
         mAnimateButton = findViewById(R.id.btnAnimate);
+        mCircleView = findViewById(R.id.circlePathView);
         mRevolutionToggle = findViewById(R.id.tvRevolutionToggle);
         mRotationToggle = findViewById(R.id.tvRotationToggle);
 
@@ -88,6 +90,12 @@ public class AnimatePropertiesActivity extends AppCompatActivity {
         mRotationToggle.setOnClickListener(clickListener);
 
         initializeProperties();
+
+        ObjectAnimator pathAnimation = ObjectAnimator.ofFloat(mCircleView, "radius", 190, 20);
+        pathAnimation.setRepeatCount(ValueAnimator.INFINITE);
+        pathAnimation.setRepeatMode(ValueAnimator.REVERSE);
+        pathAnimation.setDuration(5000);
+        pathAnimation.start();
     }
 
     // Clockwise -> Counterclockwise -> None -> Clockwise...
